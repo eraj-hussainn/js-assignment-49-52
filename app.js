@@ -1,49 +1,68 @@
 
         // QUESTION 1: SIGNUP FORM
 
-        var signupForm = document.getElementById("signupForm");
-
-        signupForm.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            var name = document.getElementById("userName").value;
-            var email = document.getElementById("userEmail").value;
-            var password = document.getElementById("userPassword").value;
-
-            document.getElementById("signupData").innerHTML =
-                "<h3>Signup Information</h3>" +
-                "<p>Name: " + name + "</p>" +
-                "<p>Email: " + email + "</p>" +
-                "<p>Password: " + password + "</p>";
-
-            signupForm.reset();
-
-        });
+        
+function toggleForm(){
+    var name = document.getElementById("name").value
+    var email = document.getElementById("email").value
+    var number = document.getElementById("number").value
+   
+    var myCard = document.getElementById("myCard")
+    var form = document.getElementById("form")
+    form.style.display="none"
+    myCard.innerHTML=`<div class="id-card">
+    <div class="id-header">
+       <img src="https://lms.saylaniit.com/sit-logo-on-dark.png" class="id-logo" alt="logo">
+       <img class="id-photo" src="https://lms.saylaniit.com/sit-logo-on-dark.png" alt="photo" />
+    </div>
+    <div class="id-details">
+      <h1 class="m-name">Mr. John Doe</h1>
+      <h3 class="m-designation">HOD - Company Name</h3>
+      <div class="m-info">
+          <div>
+            <div class="m-info-group">
+              <h4 class="info-label">Name: </h4>
+              <h4 class="info-value">${name}</h4>
+            </div>
+            <div class="m-info-group">
+              <h4 class="info-label">Phone: </h4>
+              <h4 class="info-value">${number}</h4>
+            </div>
+            <div class="m-info-group">
+              <h4 class="info-label">Email: </h4>
+              <h4 class="info-value email">${email}</h4>
+            </div>
+           
+          </div>
+          <div class="m-qrcode">
+            <img src="https://img.magnific.com/free-vector/scan-me-qr-code_78370-9714.jpg?semt=ais_hybrid&w=740&q=80" alt="qr-code">
+          </div>
+      </div>
+    </div>
+    <div class="id-footer">
+        www.website.com
+    </div>
+</div>`
+    
+}
 
 
 
         // QUESTION 2: READ MORE
 
-        function readMore() {
+       function expand() {
+    var shortPara = "Slow lorises are a group of several species of strepsirrhine primates which make up the genus Nycticebus.";
 
-            var moreText = document.getElementById("moreText");
-            var readBtn = document.getElementById("readBtn");
+    var expandedParagraph = "Slow lorises are a group of several species of strepsirrhine primates which make up the genus Nycticebus. They have a round head, narrow snout, large eyes, and a variety of distinctive coloration patterns that are species-dependent. The hands and feet of slow lorises have several adaptations that give them a pincer-like grip and enable them to grasp branches for long periods of time. Slow lorises have a toxic bite, a rare trait among mammals.";
 
-            if (moreText.style.display === "none") {
-
-                moreText.style.display = "inline";
-                readBtn.innerHTML = "Read Less";
-
-            } else {
-
-                moreText.style.display = "none";
-                readBtn.innerHTML = "Read More";
-
-            }
-
-        }
-
+    if (document.getElementById("link").innerHTML === "see more...") {
+        document.getElementById("slowLoris").innerHTML = expandedParagraph;
+        document.getElementById("link").innerHTML = "see less";
+    } else {
+        document.getElementById("slowLoris").innerHTML = shortPara;
+        document.getElementById("link").innerHTML = "see more...";
+    }
+}
 
 
         // QUESTION 3: STUDENT DETAILS
@@ -121,88 +140,4 @@
 
 
 
-        // DELETE STUDENT
-
-        function deleteStudent(index) {
-
-            students.splice(index, 1);
-
-            showStudents();
-
-            if (editIndex === index) {
-
-                cancelEdit();
-
-            } else if (editIndex > index) {
-
-                editIndex--;
-
-            }
-
-        }
-
-
-
-        // EDIT STUDENT
-
-        function editStudent(index) {
-
-            editIndex = index;
-
-            document.getElementById("editName").value =
-                students[index].name;
-
-            document.getElementById("editClass").value =
-                students[index].studentClass;
-
-            document.getElementById("editRoll").value =
-                students[index].roll;
-
-            document.getElementById("editEmail").value =
-                students[index].email;
-
-            document.getElementById("editForm").style.display = "block";
-
-        }
-
-
-
-        // UPDATE STUDENT
-
-        var editForm = document.getElementById("editForm");
-
-        editForm.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            students[editIndex].name =
-                document.getElementById("editName").value;
-
-            students[editIndex].studentClass =
-                document.getElementById("editClass").value;
-
-            students[editIndex].roll =
-                document.getElementById("editRoll").value;
-
-            students[editIndex].email =
-                document.getElementById("editEmail").value;
-
-            showStudents();
-
-            cancelEdit();
-
-        });
-
-
-
-        // CANCEL EDIT
-
-        function cancelEdit() {
-
-            document.getElementById("editForm").style.display = "none";
-
-            editForm.reset();
-
-            editIndex = -1;
-
-        }
+     

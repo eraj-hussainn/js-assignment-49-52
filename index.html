@@ -40,31 +40,71 @@
 
     </div>
 
+<div class="wrapper" id="form">
+      <!-- Sign in form -->
+      <div id="sign-in-box">
+        <h3 class="title">welcome back</h3>
+        <div class="input-box">
+          <input type="text" id="name" required />
+          <label>name</label>
+        </div>
+        <div class="input-box">
+          <input type="email" id="email" required />
+          <label>email addresses</label>
+        </div>
+        <div class="input-box">
+          <input type="password" id="number" required />
+          <label>password</label>
+        </div>
+        <button class="btn" onclick="toggleForm()">sign in</button>
+        <!-- toggle-text -->
+        <div class="toggle-text">
+          don't have an account? <a onclick="toggleForm()">sign up</a>
+        </div>
+      </div>
+      <!-- Sign Up Form -->
+      <div id="sign-up-box" class="sign-up-box">
+        <h3 class="title">create account</h3>
+        <div class="input-box">
+          <input type="text" required />
+          <label>full name</label>
+        </div>
+        <div class="input-box">
+          <input type="email" required />
+          <label>email</label>
+        </div>
+        <div class="input-box">
+          <input type="password" required />
+          <label>create password</label>
+        </div>
+        <button class="btn">register</button>
+        <div class="toggle-text">
+          already have an account? <a onclick="toggleForm()">sign in</a>
+        </div>
+      </div>
+    </div>
+    <div id="myCard">
 
+   
+    
+</div>
     <hr>
 
 
     <!-- QUESTION 2 -->
     <!-- Create a Read More button to display complete item details. -->
 
-    <div class="section">
-
-        <h2>2. Read More</h2>
-
-        <h3>JavaScript Course</h3>
-
-        <p>
-            JavaScript is a programming language used to make websites interactive.
-            <span id="moreText" style="display: none;">
-                It allows developers to create dynamic websites, handle user events,
-                validate forms and update webpage content without reloading the page.
-                It is an important part of modern web development.
-            </span>
-        </p>
-
-        <button onclick="readMore()" id="readBtn">Read More</button>
-
-    </div>
+  <div>
+ZIP:<br>
+<input type="text"  placeholder="Enter your zip code" id="zip" onBlur="fillCity();"><br>
+City:<br>
+<input type="City Name" placeholder="City Name" id="cityName" onblur="giveZip()">
+</div>
+<!-- chap-51 -->
+<p id="slowLoris">
+Slow lorises are a group of several species of strepsirrhine primates which make up the genus Nycticebus.
+</p>
+<a href="javascript:void(0);" onClick="expand();" id="link"><em>see more</em></a>
 
 
     <hr>
