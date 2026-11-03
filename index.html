@@ -14,93 +14,42 @@
     <!-- QUESTION 1 -->
     <!-- Create a signup form and display form data in your webpage on submission. -->
 
-    <div class="section">
+ <div class="section">
+    <h2>1. Signup Form</h2>
 
-        <h2>1. Signup Form</h2>
+    <div id="signupForm">
 
-        <form id="signupForm">
+        <input type="text" id="userName"
+        placeholder="Enter your name" required>
 
-            <input type="text" id="userName" placeholder="Enter your name" required>
+        <br><br>
 
-            <br>
+        <input type="email" id="userEmail"
+        placeholder="Enter your email" required>
 
-            <input type="email" id="userEmail" placeholder="Enter your email" required>
+        <br><br>
 
-            <br>
+        <input type="password" id="userPassword"
+        placeholder="Enter password" required>
 
-            <input type="password" id="userPassword" placeholder="Enter password" required>
+        <br><br>
 
-            <br>
-
-            <button type="submit">Sign Up</button>
-
-        </form>
-
-        <div id="signupData"></div>
+        <button type="button" onclick="post()">Sign Up</button>
 
     </div>
 
-<div class="wrapper" id="form">
-      <!-- Sign in form -->
-      <div id="sign-in-box">
-        <h3 class="title">welcome back</h3>
-        <div class="input-box">
-          <input type="text" id="name" required />
-          <label>name</label>
-        </div>
-        <div class="input-box">
-          <input type="email" id="email" required />
-          <label>email addresses</label>
-        </div>
-        <div class="input-box">
-          <input type="password" id="number" required />
-          <label>password</label>
-        </div>
-        <button class="btn" onclick="toggleForm()">sign in</button>
-        <!-- toggle-text -->
-        <div class="toggle-text">
-          don't have an account? <a onclick="toggleForm()">sign up</a>
-        </div>
-      </div>
-      <!-- Sign Up Form -->
-      <div id="sign-up-box" class="sign-up-box">
-        <h3 class="title">create account</h3>
-        <div class="input-box">
-          <input type="text" required />
-          <label>full name</label>
-        </div>
-        <div class="input-box">
-          <input type="email" required />
-          <label>email</label>
-        </div>
-        <div class="input-box">
-          <input type="password" required />
-          <label>create password</label>
-        </div>
-        <button class="btn">register</button>
-        <div class="toggle-text">
-          already have an account? <a onclick="toggleForm()">sign in</a>
-        </div>
-      </div>
-    </div>
-    <div id="myCard">
-
-   
-    
+    <div id="result"></div>
 </div>
+
+       
+     
     <hr>
 
 
     <!-- QUESTION 2 -->
     <!-- Create a Read More button to display complete item details. -->
 
-  <div>
-ZIP:<br>
-<input type="text"  placeholder="Enter your zip code" id="zip" onBlur="fillCity();"><br>
-City:<br>
-<input type="City Name" placeholder="City Name" id="cityName" onblur="giveZip()">
-</div>
-<!-- chap-51 -->
+ 
 <p id="slowLoris">
 Slow lorises are a group of several species of strepsirrhine primates which make up the genus Nycticebus.
 </p>
@@ -115,11 +64,11 @@ Slow lorises are a group of several species of strepsirrhine primates which make
     Each row must have Edit and Delete buttons.
     Edit button should display a hidden form with that row's values. -->
 
-    <div class="section">
+    <form class="section" onsubmit="addStudent(event)">
 
         <h2>3. Student Details</h2>
 
-        <form id="studentForm">
+        <div id="studentForm">
 
             <input type="text" id="studentName" placeholder="Student Name" required>
 
@@ -137,7 +86,7 @@ Slow lorises are a group of several species of strepsirrhine primates which make
 
 
         <!-- Student Table -->
-
+<h2>Studenr Record</h2>
         <table>
 
             <thead>
@@ -157,7 +106,7 @@ Slow lorises are a group of several species of strepsirrhine primates which make
         </table>
 
 
-        <!-- Hidden Edit Form -->
+        Hidden Edit Form
 
         <form id="editForm">
 

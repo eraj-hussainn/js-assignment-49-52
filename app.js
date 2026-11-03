@@ -1,57 +1,30 @@
 
         // QUESTION 1: SIGNUP FORM
 
-        
-function toggleForm(){
-    var name = document.getElementById("name").value
-    var email = document.getElementById("email").value
-    var number = document.getElementById("number").value
-   
-    var myCard = document.getElementById("myCard")
-    var form = document.getElementById("form")
-    form.style.display="none"
-    myCard.innerHTML=`<div class="id-card">
-    <div class="id-header">
-       <img src="https://lms.saylaniit.com/sit-logo-on-dark.png" class="id-logo" alt="logo">
-       <img class="id-photo" src="https://lms.saylaniit.com/sit-logo-on-dark.png" alt="photo" />
-    </div>
-    <div class="id-details">
-      <h1 class="m-name">Mr. John Doe</h1>
-      <h3 class="m-designation">HOD - Company Name</h3>
-      <div class="m-info">
-          <div>
-            <div class="m-info-group">
-              <h4 class="info-label">Name: </h4>
-              <h4 class="info-value">${name}</h4>
-            </div>
-            <div class="m-info-group">
-              <h4 class="info-label">Phone: </h4>
-              <h4 class="info-value">${number}</h4>
-            </div>
-            <div class="m-info-group">
-              <h4 class="info-label">Email: </h4>
-              <h4 class="info-value email">${email}</h4>
-            </div>
-           
-          </div>
-          <div class="m-qrcode">
-            <img src="https://img.magnific.com/free-vector/scan-me-qr-code_78370-9714.jpg?semt=ais_hybrid&w=740&q=80" alt="qr-code">
-          </div>
-      </div>
-    </div>
-    <div class="id-footer">
-        www.website.com
-    </div>
-</div>`
-    
+    // QUESTION 1: SIGNUP FORM
+
+function post() {
+
+    var userName = document.getElementById("userName").value;
+    var userPassword = document.getElementById("userPassword").value;
+    var userEmail = document.getElementById("userEmail").value;
+
+    console.log("Name: " + userName);
+    console.log("Email: " + userEmail);
+    console.log("Password: " + userPassword);
+
+    document.getElementById("result").innerHTML =
+        "Name: " + userName +
+        "<br>Email: " + userEmail +
+        "<br>Password: " + userPassword;
 }
 
 
 
         // QUESTION 2: READ MORE
 
-       function expand() {
-    var shortPara = "Slow lorises are a group of several species of strepsirrhine primates which make up the genus Nycticebus.";
+    function expand() {
+var shortPara = "Slow lorises are a group of several species of strepsirrhine primates which make up the genus Nycticebus.";
 
     var expandedParagraph = "Slow lorises are a group of several species of strepsirrhine primates which make up the genus Nycticebus. They have a round head, narrow snout, large eyes, and a variety of distinctive coloration patterns that are species-dependent. The hands and feet of slow lorises have several adaptations that give them a pincer-like grip and enable them to grasp branches for long periods of time. Slow lorises have a toxic bite, a rare trait among mammals.";
 
@@ -65,79 +38,107 @@ function toggleForm(){
 }
 
 
-        // QUESTION 3: STUDENT DETAILS
+    // QUESTION 3: DELETE AND EDIT TABLE
 
-        var studentForm = document.getElementById("studentForm");
+    var selectedRow = null;
 
-        var studentTable = document.getElementById("studentTable");
-
-        var students = [];
-
-        var editIndex = -1;
-
-
-        // ADD STUDENT
-
-        studentForm.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            var name = document.getElementById("studentName").value;
-            var studentClass = document.getElementById("studentClass").value;
-            var roll = document.getElementById("studentRoll").value;
-            var email = document.getElementById("studentEmail").value;
-
-            var student = {
-                name: name,
-                studentClass: studentClass,
-                roll: roll,
-                email: email
-            };
-
-            students.push(student);
-
-            showStudents();
-
-            studentForm.reset();
-
-        });
+               function addStudent(event){
+            event.preventDefault()
+var nameValue = document.getElementById("studentName").value
+var classValue = document.getElementById("studentClass").value
+var rollValue = document.getElementById("studentRoll").value
+var emailValue = document.getElementById("studentEmail").value
 
 
+var tableBody = document.getElementById("studentTable")
+var row = document.createElement("tr")
 
-        // DISPLAY STUDENTS IN TABLE
+row.innerHTML = `<td>${nameValue}</td>
+                 <td>${classValue}</td>
+                 <td>${rollValue}</td>
+                 <td>${emailValue}</td>
+<td><button type="button" onclick="editRow(this)">Edit</button>
+<button type="button" onclick="dltRow(this)">Delete</button></td>`
+tableBody.appendChild(row)
 
-        function showStudents() {
+// or
 
-            studentTable.innerHTML = "";
-
-            for (var i = 0; i < students.length; i++) {
-
-                studentTable.innerHTML +=
-
-                    "<tr>" +
-
-                    "<td>" + students[i].name + "</td>" +
-
-                    "<td>" + students[i].studentClass + "</td>" +
-
-                    "<td>" + students[i].roll + "</td>" +
-
-                    "<td>" + students[i].email + "</td>" +
-
-                    "<td>" +
-
-                    "<button onclick='editStudent(" + i + ")'>Edit</button>" +
-
-                    "<button onclick='deleteStudent(" + i + ")'>Delete</button>" +
-
-                    "</td>" +
-
-                    "</tr>";
-
-            }
-
+// studentTable.innerHTML += `
+// <tr><td>${nameValue}</td>
+//                  <td>${classValue}</td>
+//                  <td>${rollValue}</td>
+//                  <td>${emailValue}</td>
+// <td><button onclick="editRow">Edit</button>
+// <button onclick="dltRow">Delete</button></td></tr>`
         }
 
 
+function dltRow(e){
 
-     
+//    e.closest("tr").remove();
+
+   //  or
+
+   var activeRow = e.parentNode.parentNode
+console.log(activeRow)
+activeRow.remove()
+
+//   or
+// document.getElementById("studentName").value = "";
+// document.getElementById("studentClass").value = "";
+// document.getElementById("studentRoll").value = "";
+// document.getElementById("studentEmail").value = "";
+
+}
+
+function editRow(e) {
+
+    selectedRow = e.parentNode.parentNode;
+
+    var currentName = selectedRow.children[0].textContent;
+    var currentClass = selectedRow.children[1].textContent;
+    var currentRoll = selectedRow.children[2].textContent;
+    var currentEmail = selectedRow.children[3].textContent;
+
+    document.getElementById("editForm").style.display = "block";
+
+    document.getElementById("editName").value = currentName;
+    document.getElementById("editClass").value = currentClass;
+    document.getElementById("editRoll").value = currentRoll;
+    document.getElementById("editEmail").value = currentEmail;
+}
+
+
+
+document.getElementById("editForm").onsubmit = function(event) {
+
+    event.preventDefault();
+
+    selectedRow.children[0].textContent =
+        document.getElementById("editName").value;
+
+    selectedRow.children[1].textContent =
+        document.getElementById("editClass").value;
+
+    selectedRow.children[2].textContent =
+        document.getElementById("editRoll").value;
+
+    selectedRow.children[3].textContent =
+        document.getElementById("editEmail").value;
+
+    document.getElementById("editForm").style.display = "none";
+
+    selectedRow = null;
+};
+
+
+
+
+function cancelEdit() {
+
+    document.getElementById("editForm").style.display = "none";
+
+    selectedRow = null;
+}
+
+

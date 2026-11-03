@@ -34,3 +34,9 @@
         .section {
             margin-bottom: 40px;
         }
+
+        
+#editForm {
+    display: none;
+    margin-top: 20px;
+}
